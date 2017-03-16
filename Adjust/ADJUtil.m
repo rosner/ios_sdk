@@ -361,7 +361,6 @@ static NSString * const kDateFormat             = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
         activityPackage:(ADJActivityPackage *)activityPackage
     responseDataHandler:(void (^)(ADJResponseData *responseData))responseDataHandler {
     NSMutableURLRequest *request = [ADJUtil requestForPackage:activityPackage queueSize:queueSize];
-    //NSLog(@"URL string: %@", [[request URL] absoluteString]);
 
     [ADJUtil sendRequest:request
       prefixErrorMessage:prefixErrorMessage
@@ -405,7 +404,6 @@ responseDataHandler:(void (^)(ADJResponseData *responseData))responseDataHandler
     activityPackage:(ADJActivityPackage *)activityPackage
 responseDataHandler:(void (^)(ADJResponseData *responseData))responseDataHandler {
     Class NSURLSessionClass = NSClassFromString(@"NSURLSession");
-
     if (userAgent != nil) {
         [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
     }
