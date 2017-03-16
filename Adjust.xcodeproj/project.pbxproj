@@ -304,6 +304,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		208694CD1E7AA205008B8071 /* ADJAnalyzer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADJAnalyzer.h; sourceTree = "<group>"; };
+		208694CE1E7AA205008B8071 /* ADJAnalyzer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADJAnalyzer.m; sourceTree = "<group>"; };
+		208694D01E7AA29A008B8071 /* ADJDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADJDictionary.h; sourceTree = "<group>"; };
+		208694D11E7AA29A008B8071 /* ADJDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADJDictionary.m; sourceTree = "<group>"; };
 		9601C19C1A31DD7F00A9AE21 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		9601C1A11A31DE0300A9AE21 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9601CAE21C74B70600670879 /* ADJEventSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADJEventSuccess.h; sourceTree = "<group>"; };
@@ -627,6 +631,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		208694CC1E7AA205008B8071 /* AdjustAnalyzer */ = {
+			isa = PBXGroup;
+			children = (
+				208694CD1E7AA205008B8071 /* ADJAnalyzer.h */,
+				208694CE1E7AA205008B8071 /* ADJAnalyzer.m */,
+			);
+			path = AdjustAnalyzer;
+			sourceTree = "<group>";
+		};
+		208694CF1E7AA29A008B8071 /* AdjustDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				208694D01E7AA29A008B8071 /* ADJDictionary.h */,
+				208694D11E7AA29A008B8071 /* ADJDictionary.m */,
+			);
+			path = AdjustDictionary;
+			sourceTree = "<group>";
+		};
 		961515901CD2CB2C0022D336 /* AdjustBridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,6 +691,8 @@
 		9679920418BBAE2800394606 = {
 			isa = PBXGroup;
 			children = (
+				208694CF1E7AA29A008B8071 /* AdjustDictionary */,
+				208694CC1E7AA205008B8071 /* AdjustAnalyzer */,
 				96E5E39A18BBB49E008E7B30 /* AdjustTests */,
 				96E5E34B18BBB48A008E7B30 /* Adjust */,
 				9648C5E41CD1765E00A3B049 /* AdjustBridge */,
