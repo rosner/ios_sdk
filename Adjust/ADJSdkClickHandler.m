@@ -22,7 +22,6 @@ static const char * const kInternalQueueName    = "com.adjust.SdkClickQueue";
 @property (nonatomic, strong) ADJBackoffStrategy * backoffStrategy;
 @property (nonatomic, assign) BOOL paused;
 @property (nonatomic, strong) NSMutableArray *packageQueue;
-@property (nonatomic, strong) NSURL *baseUrl;
 
 @end
 
@@ -86,7 +85,6 @@ static const char * const kInternalQueueName    = "com.adjust.SdkClickQueue";
     self.logger = nil;
     self.backoffStrategy = nil;
     self.packageQueue = nil;
-    self.baseUrl = nil;
 }
 
 #pragma mark - internal
@@ -94,7 +92,6 @@ static const char * const kInternalQueueName    = "com.adjust.SdkClickQueue";
 {
     selfI.backoffStrategy = [ADJAdjustFactory sdkClickHandlerBackoffStrategy];
     selfI.packageQueue = [NSMutableArray array];
-    selfI.baseUrl = [NSURL URLWithString:ADJUtil.baseUrl];
 }
 
 - (void)sendSdkClickI:(ADJSdkClickHandler *)selfI
@@ -126,8 +123,7 @@ static const char * const kInternalQueueName    = "com.adjust.SdkClickQueue";
     }
 
     dispatch_block_t work = ^{
-        [ADJUtil sendPostRequest:selfI.baseUrl
-                       queueSize:queueSize - 1
+        [ADJUtil sendPostRequest:queueSize - 1
               prefixErrorMessage:sdkClickPackage.failureMessage
               suffixErrorMessage:@"Will retry later"
                  activityPackage:sdkClickPackage

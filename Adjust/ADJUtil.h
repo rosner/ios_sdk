@@ -19,6 +19,7 @@ typedef void (^selfInjectedBlock)(id);
 
 + (void)updateUrlSessionConfiguration:(ADJConfig *)config;
 
++ (void)setBaseUrl:(NSString *)url;
 + (NSString *)baseUrl;
 + (NSString *)clientSdk;
 
@@ -43,8 +44,7 @@ typedef void (^selfInjectedBlock)(id);
 + (BOOL)isNull:(id)value;
 + (BOOL)isNotNull:(id)value;
 
-+ (void)sendPostRequest:(NSURL *)baseUrl
-              queueSize:(NSUInteger)queueSize
++ (void)sendPostRequest:(NSUInteger)queueSize
      prefixErrorMessage:(NSString *)prefixErrorMessage
      suffixErrorMessage:(NSString *)suffixErrorMessage
         activityPackage:(ADJActivityPackage *)activityPackage

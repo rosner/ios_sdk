@@ -21,7 +21,6 @@ static const char * const kInternalQueueName = "io.adjust.RequestQueue";
 @property (nonatomic, strong) dispatch_queue_t internalQueue;
 @property (nonatomic, weak) id<ADJPackageHandler> packageHandler;
 @property (nonatomic, weak) id<ADJLogger> logger;
-@property (nonatomic, strong) NSURL *baseUrl;
 
 @end
 
@@ -39,7 +38,6 @@ static const char * const kInternalQueueName = "io.adjust.RequestQueue";
     self.internalQueue = dispatch_queue_create(kInternalQueueName, DISPATCH_QUEUE_SERIAL);
     self.packageHandler = packageHandler;
     self.logger = ADJAdjustFactory.logger;
-    self.baseUrl = [NSURL URLWithString:ADJUtil.baseUrl];
 
     return self;
 }
@@ -62,7 +60,6 @@ static const char * const kInternalQueueName = "io.adjust.RequestQueue";
     self.internalQueue = nil;
     self.packageHandler = nil;
     self.logger = nil;
-    self.baseUrl = nil;
 }
 
 #pragma mark - internal
@@ -71,8 +68,7 @@ activityPackage:(ADJActivityPackage *)activityPackage
    queueSize:(NSUInteger)queueSize
 {
 
-    [ADJUtil sendPostRequest:selfI.baseUrl
-                   queueSize:queueSize
+    [ADJUtil sendPostRequest:queueSize
           prefixErrorMessage:activityPackage.failureMessage
           suffixErrorMessage:@"Will retry later"
              activityPackage:activityPackage
