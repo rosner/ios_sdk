@@ -205,6 +205,8 @@ static NSString * const kDateFormat             = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
     NSError *error = nil;
     NSException *exception = nil;
     NSDictionary *jsonDict = [ADJUtil buildJsonDict:jsonData exceptionPtr:&exception errorPtr:&error];
+    //        NSString *decodedString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    //       NSLog(@"decoded cookie: %@", decodedString);
 
     if (exception != nil) {
         NSString *message = [NSString stringWithFormat:@"Failed to parse json response. (%@)", exception.description];
@@ -366,10 +368,10 @@ static NSString * const kDateFormat             = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'
 }
 
 + (NSMutableURLRequest *)requestForPackage:(ADJActivityPackage *)activityPackage
-                                   baseUrl:(NSURL *)baseUrl
                                  queueSize:(NSUInteger)queueSize {
-    NSURL *url = [NSURL URLWithString:activityPackage.path relativeToURL:baseUrl];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kBaseUrl, activityPackage.path]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+
     request.timeoutInterval = kRequestTimeout;
     request.HTTPMethod = @"POST";
 
